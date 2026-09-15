@@ -41,7 +41,7 @@ function Trace() {
   const boardRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
-  const board: Board = BOARDS[roundIndex];
+  const board: Board = BOARDS[roundIndex]!;
   const blocked = useMemo(() => new Set(board.blocked.map(([x, y]) => x + "," + y)), [board]);
   const waypointMap = useMemo(() => {
     const m: Record<string, { x: number; y: number; n: number }> = {};
@@ -103,7 +103,7 @@ function Trace() {
 
   const isStuck = (p: Cell[]) => {
     if (!p.length || p.length === totalCells) return false;
-    const last = p[p.length - 1];
+    const last = p[p.length - 1]!;
     const neighbours: Cell[] = [
       [last[0] + 1, last[1]],
       [last[0] - 1, last[1]],
@@ -145,12 +145,12 @@ function Trace() {
         return [c];
       }
 
-      const last = prev[prev.length - 1];
+      const last = prev[prev.length - 1]!;
       if (last[0] === c[0] && last[1] === c[1]) return prev;
 
       // backing up along your own line
       if (prev.length > 1) {
-        const before = prev[prev.length - 2];
+        const before = prev[prev.length - 2]!;
         if (before[0] === c[0] && before[1] === c[1]) {
           setMessage({ text: "" });
           return prev.slice(0, -1);
@@ -223,7 +223,7 @@ function Trace() {
       return `${i === 0 ? "M" : "L"} ${x} ${y}`;
     })
     .join(" ");
-  const head = path.length ? center(path[path.length - 1]) : null;
+  const head = path.length ? center(path[path.length - 1]!) : null;
 
   const cells: Cell[] = [];
   for (let y = 0; y < board.h; y++) for (let x = 0; x < board.w; x++) cells.push([x, y]);
