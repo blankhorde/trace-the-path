@@ -72,8 +72,16 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --font-display-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --ink: oklch(0.256 0.033 254);
+  --slate: oklch(0.535 0.039 254);
+  --frost: oklch(0.936 0.012 240);
+  --accent-line: oklch(0.494 0.084 220);
+  --coral: oklch(0.615 0.164 33);
+  --surface: oklch(0.995 0.002 240);
+  --background: oklch(0.962 0.008 245);
+  --foreground: oklch(0.256 0.033 254);
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
